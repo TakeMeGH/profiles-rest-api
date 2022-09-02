@@ -24,6 +24,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
             nama = validated_data['nama'],
             umur = validated_data['umur'],
             tanggal_lahir = validated_data['tanggal_lahir'],
-            codeforces_id = validated_data['codeforces_id']
+            codeforces_id = validated_data['codeforces_id'],
+            password = validated_data['password']
         )
         return user
+
+    def update(self, instance, validated_data):
+        if 'password' in validated_data:
+            password = validated_data.pop('password')
+            instance.set_password(password)
+
+        return super().update(instance, validated_data)
