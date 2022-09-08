@@ -5,3 +5,5 @@ whitenoise
 psycopg2-binary
 requests
 urllib3
+dj-database-url 
+psycopg2
